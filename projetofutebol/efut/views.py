@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from .serializers import UserSerializer, GroupSerializer, UsuariosSerializer
-from .models import Usuarios
+from .serializers import UserSerializer, GroupSerializer, UsuariosSerializer, TimesSerializer, LancesSerializer, LocaisSerializer, \
+    PartidasSerializer
+from .models import Usuarios, Partidas, Lances, Locais, Times
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -23,4 +24,25 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 class UsuariosViewSet(viewsets.ModelViewSet):
     queryset = Usuarios.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = UsuariosSerializer
+
+
+class TimesViewSet(viewsets.ModelViewSet):
+    queryset = Times.objects.all()
+    serializer_class = TimesSerializer
+
+
+class PartidasViewSet(viewsets.ModelViewSet):
+    queryset = Partidas.objects.all()
+    serializer_class = PartidasSerializer
+
+
+class LancesViewSet(viewsets.ModelViewSet):
+    queryset = Lances.objects.all()
+    serializer_class = LancesSerializer
+
+
+class LocaisViewSet(viewsets.ModelViewSet):
+    queryset = Locais.objects.all()
+    serializer_class = LocaisSerializer
+
